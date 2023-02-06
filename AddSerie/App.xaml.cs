@@ -1,6 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using AddSerie.ViewModels;
+using AddSerie.Views;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -36,6 +40,11 @@ namespace AddSerie
         public App()
         {
             this.InitializeComponent();
+
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddSingleton<PageAddSeriesViewModels>()
+                .BuildServiceProvider());
         }
 
         /// <summary>
@@ -45,9 +54,23 @@ namespace AddSerie
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();
+            Frame rootFrame = new Frame();
+            this.m_window.Content = rootFrame;
+            MainRoot = m_window.Content as FrameworkElement;
             m_window.Activate();
+            rootFrame.Navigate(typeof(PageAddSeries));
         }
+        public static FrameworkElement MainRoot { get; private set; }
 
         private Window m_window;
+
+        public PageAddSeriesViewModels PageSeries
+        {
+            get
+            {
+                return Ioc.Default.GetService<PageAddSeriesViewModels>();
+            }
+
+        }
     }
 }
