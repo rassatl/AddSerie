@@ -14,14 +14,9 @@ namespace AddSerie.ViewModels
 {
     public abstract class PageSerie : ObservableObject
     {
-        public IRelayCommand BtnPostSerie { get; }
-        public abstract void ActionSetSeries();
-
         public PageSerie()
         {
             GetDataOnLoadAsync();
-            //Boutons
-            BtnPostSerie = new RelayCommand(ActionSetSeries);
         }
         private Series serieToAdd;
 
@@ -29,6 +24,18 @@ namespace AddSerie.ViewModels
         {
             get { return serieToAdd; }
             set { serieToAdd = value; }
+        }
+
+        private Series serieToSearch;
+
+        public Series SerieToSearch
+        {
+            get { return serieToSearch; }
+            set
+            {
+                serieToSearch = value;
+                OnPropertyChanged();
+            }
         }
 
 

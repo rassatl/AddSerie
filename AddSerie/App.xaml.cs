@@ -44,6 +44,7 @@ namespace AddSerie
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                 .AddSingleton<PageAddSeriesViewModels>()
+                .AddSingleton<PageUpdateSeriesViewModels>()
                 .BuildServiceProvider());
         }
 
@@ -58,17 +59,26 @@ namespace AddSerie
             this.m_window.Content = rootFrame;
             MainRoot = m_window.Content as FrameworkElement;
             m_window.Activate();
-            rootFrame.Navigate(typeof(PageAddSeries));
+            rootFrame.Navigate(typeof(PageUpdateSeries));
         }
         public static FrameworkElement MainRoot { get; private set; }
 
         private Window m_window;
 
-        public PageAddSeriesViewModels PageSeries
+        public PageAddSeriesViewModels PageAddSeriesFunc
         {
             get
             {
                 return Ioc.Default.GetService<PageAddSeriesViewModels>();
+            }
+
+        }
+
+        public PageUpdateSeriesViewModels PageUpdateSeriesFunc
+        {
+            get
+            {
+                return Ioc.Default.GetService<PageUpdateSeriesViewModels>();
             }
 
         }

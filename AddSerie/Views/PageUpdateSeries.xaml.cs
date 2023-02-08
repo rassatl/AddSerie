@@ -24,12 +24,12 @@ namespace AddSerie.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PageAddSeries : Page
+    public sealed partial class PageUpdateSeries : Page
     {
-        public PageAddSeries()
+        public PageUpdateSeries()
         {
-            this.InitializeComponent();
-            DataContext = ((App)Application.Current).PageAddSeriesFunc;
+            this.InitializeComponent(); 
+            DataContext = ((App)Application.Current).PageUpdateSeriesFunc;
         }
     }
 }
