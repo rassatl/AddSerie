@@ -12,24 +12,62 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel>
-        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" Name="Convertir" Text="Titre" Margin="0 30 0 0"/>
-        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding MontantEuro, Mode=TwoWay}" Name="txtbox1" RelativePanel.Below="Convertir" Margin="0 10 0 0" />
-        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" Name="Devise" RelativePanel.Below="txtbox1" Text="Resume" Margin="0 10 0 0"/>
-        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" Name="blocResume" RelativePanel.Below="Devise" Margin="0 10 0 0" />
+        <TextBlock TextAlignment="Center" Text="Titre" Margin="10" Name="B1" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="180"/>
 
-        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" Name="textNbSaisons" RelativePanel.Below="blocResume" Text="Nb Saisons" Margin="0 10 0 0" />
-        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" Name="blocNbSaisons" RelativePanel.Below="textNbSaisons" Margin="0 10 0 0" />
+        <TextBox
+            Text="{Binding SerieToAdd.Titre, Mode=TwoWay}"
+            Width="180"
+            Margin="5"
+            Name="BOX1"
+            RelativePanel.Below="B1"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
 
-        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" Name="textNbEpisodes" RelativePanel.Below="blocNbSaisons" Text="Nb Episodes" Margin="0 10 0 0" />
-        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" Name="blocNbEpisodes" RelativePanel.Below="textNbEpisodes" Margin="0 10 0 0" />
+        <TextBlock TextAlignment="Center" Width="180" Text="Resume" Margin="10" Name="B2" RelativePanel.Below="BOX1"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
 
-        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" Name="textAnneeCreation" RelativePanel.Below="blocNbEpisodes" Text="Annee creation" Margin="0 10 0 0" />
-        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Text="" Name="blocAnneeCreation" RelativePanel.Below="textAnneeCreation" Margin="0 10 0 0" />
-        <TextBlock RelativePanel.AlignHorizontalCenterWithPanel="True" Name="Montant" RelativePanel.Below="blocAnneeCreation" Text="Chaine" Margin="0 10 0 0" />
-        <TextBox RelativePanel.AlignHorizontalCenterWithPanel="True" Text="{Binding Res}" Name="txtbox2" RelativePanel.Below="Montant" Margin="0 10 0 0" />
-        <ComboBox ItemsSource="{Binding Valeurs}" DisplayMemberPath="network" SelectedItem="{Binding SelectedCurrency, Mode=TwoWay}" Width="130px" RelativePanel.AlignHorizontalCenterWithPanel="True" Name="Combobox" RelativePanel.Below="txtbox2" Margin="0 20 0 0" />
+        <TextBox
+            Text="{Binding SerieToAdd.Resume, Mode=TwoWay}"
+            Width="220"
+            Height="120"
+            Margin="5"
+            Name="BOX2"
+            RelativePanel.Below="B2"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
 
-        <Button Content="Ajouter" Command="{Binding BtnSetConversion}" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Combobox" Name="button" Margin="0 40 0 0" />
+        <TextBlock TextAlignment="Center" Width="180" Text="Nb saisons" Margin="15" Name="B3" RelativePanel.Below="BOX2"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <TextBox
+            Text="{Binding SerieToAdd.Nbsaisons, Mode=TwoWay}"
+            Width="50"
+            Margin="5"
+            Name="BOX3"
+            RelativePanel.Below="B3"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <TextBlock TextAlignment="Center" Width="180" Text="Nb episodes" Margin="15" Name="B4" RelativePanel.Below="BOX3"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <TextBox
+            Text="{Binding SerieToAdd.Nbepisodes, Mode=TwoWay}"
+            Width="50"
+            Margin="5"
+            Name="BOX4"
+            RelativePanel.Below="B4"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <TextBlock TextAlignment="Center" Width="180" Text="Annee creation" Margin="15" Name="B5" RelativePanel.Below="BOX4"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <TextBox
+            Text="{Binding SerieToAdd.Anneecreation, Mode=TwoWay}"
+            Width="50"
+            Margin="5"
+            Name="BOX5"
+            RelativePanel.Below="B5"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <TextBlock TextAlignment="Center" Width="180" Text="Network" Margin="15" Name="B6" RelativePanel.Below="BOX5"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <TextBox
+            Text="{Binding SerieToAdd.Network, Mode=TwoWay}"
+            Width="180"
+            Margin="5"
+            Name="BOX6"
+            RelativePanel.Below="B6"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <Button Command="{Binding BtnPostSerie}" Width="180" Content="Ajouter" Name="BTN" RelativePanel.Below="BOX6" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True"/>
 
     </RelativePanel>
 </Page>

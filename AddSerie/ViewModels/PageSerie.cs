@@ -14,70 +14,104 @@ namespace AddSerie.ViewModels
 {
     public abstract class PageSerie : ObservableObject
     {
-        public IRelayCommand BtnSetConversion { get; }
+        public IRelayCommand BtnPostSerie { get; }
+        public abstract void ActionSetSeries();
 
         public PageSerie()
         {
             GetDataOnLoadAsync();
             //Boutons
-            //BtnSetConversion = new RelayCommand(ActionSetConversion);
+            BtnPostSerie = new RelayCommand(ActionSetSeries);
         }
-        public abstract void ActionSetSeries();
+        private Series serieToAdd;
 
-        /* private double montantEuro;
-         public double MontantEuro
-         {
-             get { return montantEuro; }
-             set
-             {
-                 montantEuro = value;
-                 OnPropertyChanged();
-             }
-         }
-        */
-         private ObservableCollection<Series> valeurs;
+        public Series SerieToAdd
+        {
+            get { return serieToAdd; }
+            set { serieToAdd = value; }
+        }
 
-         public ObservableCollection<Series> Valeurs
-         {
-             get { return valeurs; }
-             set
-             {
-                 valeurs = value;
-                 OnPropertyChanged();
-             }
-         }
-        /*
-         private Devise selectedCurrency;
 
-         public Devise SelectedCurrency
-         {
-             get { return selectedCurrency; }
-             set
-             {
-                 selectedCurrency = value;
-                 OnPropertyChanged();
-             }
-         }
+        private ObservableCollection<Series> series;
 
-         private double res;
+        public ObservableCollection<Series> Series
+        {
+            get { return series; }
+            set
+            {
+                series = value;
+                OnPropertyChanged();
+            }
+        }
 
-         public double Res
-         {
-             get { return res; }
-             set
-             {
-                 res = value;
-                 OnPropertyChanged();
-             }
-         }*/
+        private string titre;
+        public string Titre
+        {
+            get { return titre; }
+            set
+            {
+                titre = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string resume;
+        public string Resume
+        {
+            get { return resume; }
+            set
+            {
+                resume = value;
+                OnPropertyChanged();
+            }
+        }
+        private int nbsaisons;
+        public int Nbsaisons
+        {
+            get { return nbsaisons; }
+            set
+            {
+                nbsaisons = value;
+                OnPropertyChanged();
+            }
+        }
+        private int nbepisodes;
+        public int Nbepisodes
+        {
+            get { return nbepisodes; }
+            set
+            {
+                nbepisodes = value;
+                OnPropertyChanged();
+            }
+        }
+        private int anneecreation;
+        public int Anneecreation
+        {
+            get { return anneecreation; }
+            set
+            {
+                anneecreation = value;
+                OnPropertyChanged();
+            }
+        }
+        private string network;
+        public string Network
+        {
+            get { return network; }
+            set
+            {
+                network = value;
+                OnPropertyChanged();
+            }
+        }
+
         public async void GetDataOnLoadAsync()
         {
-            WSService service = new WSService("https://apiseriesrassat.azurewebsites.net/api/series");
-            List<Series> result = await service.GetSeriesAsync("series");
+            WSService service = new WSService("https://apiseriesrassat.azurewebsites.net");
+            List<Series> result = await service.GetSeriesAsync();
             if (result == null)
                 ShowAsync("API non disponible !");
-            else
-                Valeurs = new ObservableCollection<Series>(result);
         }
 
         public async void ShowAsync(string errorMessage)

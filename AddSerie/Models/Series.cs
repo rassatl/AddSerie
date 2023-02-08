@@ -19,7 +19,7 @@ namespace AddSerie.Models
         /// <param name="id">the id of the currency</param>
         /// <param name="nomDevise">the name the currency</param>
         /// <param name="taux">the taux of the currency</param>
-        public Series(int serieid, string titre, string resume, int? nbsaisons, int? nbepisodes, int? anneecreation, string? network)
+        public Series(int serieid, string titre, string resume, int nbsaisons, int nbepisodes, int anneecreation, string network)
         {
             this.serieid = serieid;
             this.titre = titre;
@@ -63,9 +63,9 @@ namespace AddSerie.Models
         /// <summary>
         /// The resume property
         /// </summary>
-        private string? resume;
+        private string resume;
 
-        public string? Resume
+        public string Resume
         {
             get { return resume; }
             set { resume = value; }
@@ -74,9 +74,9 @@ namespace AddSerie.Models
         /// <summary>
         /// The nbsaisons property
         /// </summary>
-        private int? nbsaisons;
+        private int nbsaisons;
 
-        public int? Nbsaisons
+        public int Nbsaisons
         {
             get { return nbsaisons; }
             set { nbsaisons = value; }
@@ -85,9 +85,9 @@ namespace AddSerie.Models
         /// <summary>
         /// The nbepisodes property
         /// </summary>
-        private int? nbepisodes;
+        private int nbepisodes;
 
-        public int? Nbepisodes
+        public int Nbepisodes
         {
             get { return nbsaisons; }
             set { nbsaisons = value; }
@@ -96,9 +96,9 @@ namespace AddSerie.Models
         /// <summary>
         /// The anneecreation property
         /// </summary>
-        private int? anneecreation;
+        private int anneecreation;
 
-        public int? Anneecreation
+        public int Anneecreation
         {
             get { return anneecreation; }
             set { anneecreation = value; }
@@ -107,9 +107,9 @@ namespace AddSerie.Models
         /// <summary>
         /// The network property
         /// </summary>
-        private string? network;
+        private string network;
 
-        public string? Network
+        public string Network
         {
             get { return network; }
             set { network = value; }

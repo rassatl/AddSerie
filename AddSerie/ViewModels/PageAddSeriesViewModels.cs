@@ -8,22 +8,22 @@ using AddSerie.Services;
 
 namespace AddSerie.ViewModels
 {
-    public class PageAddSeriesViewModels
+    public class PageAddSeriesViewModels : PageSerie
     {
         public PageAddSeriesViewModels() : base()
         {
+            SerieToAdd = new Series();
         }
-        /*
+
         public override void ActionSetSeries()
         {
-            string errorMessage = "";
-            if (SelectedCurrency == null)
-            {
-                errorMessage = "Vous devez sélectionner une chaine !";
-                ShowAsync(errorMessage);
-            }
+            WSService Service = new WSService("https://apiseriesrassat.azurewebsites.net");
+
+            if (SerieToAdd.Titre == null)
+                ShowAsync("Il faut un titre !");
             else
-                Res = MontantEuro / SelectedCurrency.Taux;
-        }*/
+                Service.PostSerieAsync(SerieToAdd);
+
+        }
     }
 }
