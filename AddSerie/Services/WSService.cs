@@ -65,7 +65,7 @@ namespace AddSerie.Services
 
         public async Task<HttpResponseMessage> PutSerieAsync(Series serie, int id)
         {
-            using var response = await client.PostAsJsonAsync($"/api/series/{id}", serie);
+            using var response = await client.PutAsJsonAsync($"/api/series/{id}", serie);
             if (response.IsSuccessStatusCode)
             {
                 return response;

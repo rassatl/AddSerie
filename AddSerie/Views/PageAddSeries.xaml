@@ -12,6 +12,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel>
+        <Button Command="{Binding BtnChangeWindowUpdate}" Width="180" Content="Page Modification / Suppression" Name="suprr" Margin="10"/>
 
         <TextBlock TextAlignment="Center" Text="Titre" Margin="10" Name="B1" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="180"/>
 

@@ -12,27 +12,35 @@ namespace AddSerie.ViewModels
     public class PageUpdateSeriesViewModels : PageSerie
     {
         public IRelayCommand BtnSearchSerie { get; }
-        //public IRelayCommand BtnUpdateSerie { get; }
-        //public IRelayCommand BtnDeleteSerie { get; }
+        public IRelayCommand BtnUpdateSerie { get; }
+        public IRelayCommand BtnDeleteSerie { get; }
 
         public PageUpdateSeriesViewModels() : base()
         {
             BtnSearchSerie = new RelayCommand(ActionSearchSeries);
-            //BtnUpdateSerie = new RelayCommand(ActionUpdateSeries);
-            //BtnDeleteSerie = new RelayCommand(ActionDeleteSeries);
+            BtnUpdateSerie = new RelayCommand(ActionUpdateSeries);
+            BtnDeleteSerie = new RelayCommand(ActionDeleteSeries);
             SerieToSearch = new Series();
         }
 
         public async void ActionSearchSeries()
         {
             WSService Service = new WSService("https://apiseriesrassat.azurewebsites.net");
-            SerieToSearch = await Service.GetSerieAsync(SerieToSearch.Serieid);
+            if (SerieToSearch.Serieid == 0)
+                ShowAsync("Numéro de série requis");
+            else
+                SerieToSearch = await Service.GetSerieAsync(SerieToSearch.Serieid);
         }
-        /*public void ActionUpdateSeries()
+        public async void ActionUpdateSeries()
         {
+            WSService Service = new WSService("https://apiseriesrassat.azurewebsites.net");
+            await Service.PutSerieAsync(SerieToSearch, SerieToSearch.Serieid);
         }
-        public void ActionDeleteSeries()
+        public async void ActionDeleteSeries()
         {
-        }*/
+            WSService Service = new WSService("https://apiseriesrassat.azurewebsites.net");
+            await Service.DeleteSerieAsync(SerieToSearch.Serieid);
+            SerieToSearch = null;
+        }
     }
 }

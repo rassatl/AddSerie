@@ -38,7 +38,6 @@ namespace AddSerie.ViewModels
             }
         }
 
-
         private ObservableCollection<Series> series;
 
         public ObservableCollection<Series> Series

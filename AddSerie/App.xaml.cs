@@ -59,7 +59,7 @@ namespace AddSerie
             this.m_window.Content = rootFrame;
             MainRoot = m_window.Content as FrameworkElement;
             m_window.Activate();
-            rootFrame.Navigate(typeof(PageUpdateSeries));
+            rootFrame.Navigate(typeof(PageAddSeries));
         }
         public static FrameworkElement MainRoot { get; private set; }
 

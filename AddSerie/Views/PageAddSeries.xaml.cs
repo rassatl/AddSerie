@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,10 +27,25 @@ namespace AddSerie.Views
     /// </summary>
     public sealed partial class PageAddSeries : Page
     {
+        public IRelayCommand BtnChangeWindowUpdate { get; }
+
         public PageAddSeries()
         {
             this.InitializeComponent();
+            BtnChangeWindowUpdate = new RelayCommand(changepage);
             DataContext = ((App)Application.Current).PageAddSeriesFunc;
+        }
+        public static FrameworkElement MainRoot { get; private set; }
+
+        public Window m_window;
+        public void changepage()
+        {
+            m_window = new MainWindow();
+            Frame rootFrame = new Frame();
+            this.m_window.Content = rootFrame;
+            MainRoot = m_window.Content as FrameworkElement;
+            m_window.Activate();
+            rootFrame.Navigate(typeof(PageUpdateSeries));
         }
     }
 }

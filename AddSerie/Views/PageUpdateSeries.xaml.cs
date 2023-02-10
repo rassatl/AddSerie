@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
+using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -26,9 +27,10 @@ namespace AddSerie.Views
     /// </summary>
     public sealed partial class PageUpdateSeries : Page
     {
+
         public PageUpdateSeries()
         {
-            this.InitializeComponent(); 
+            this.InitializeComponent();
             DataContext = ((App)Application.Current).PageUpdateSeriesFunc;
         }
     }

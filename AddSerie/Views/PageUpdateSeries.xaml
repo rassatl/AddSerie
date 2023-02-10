@@ -76,5 +76,10 @@
             Margin="5"
             Name="BOX6"
             RelativePanel.Below="B6"  RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+
+        <StackPanel RelativePanel.Below="BOX6" Margin="10" RelativePanel.AlignHorizontalCenterWithPanel="True" Orientation="Horizontal">
+            <Button Command="{Binding BtnUpdateSerie}" Width="180" Content="Modifier" Name="BTN1" Margin="10"/>
+            <Button Command="{Binding BtnDeleteSerie}" Width="180" Content="Supprimer" Name="BTN2" Margin="10"/>
+        </StackPanel>
     </RelativePanel>
 </Page>
